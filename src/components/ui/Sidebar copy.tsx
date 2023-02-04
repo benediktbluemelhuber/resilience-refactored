@@ -55,12 +55,29 @@ const isActivePath = (path: string, currentPath: string) =>
 // eslint-disable-next-line react/display-name
 export const Sidebar = forwardRef<HTMLElement, Props>(({ showNav }, ref) => {
 	const router = useRouter();
-	
-	
-	
+
+	const [isMobile, setIsMobile] = useState(false);
+	useEffect(() => {
+		const handleResize = () => {
+			if (window.innerWidth < 767) {
+				setIsMobile(true);
+			} else {
+				setIsMobile(false);
+			}
+		};
+		handleResize();
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	if (isMobile) {
+		return null;
+	}
 
 	return (
-		<aside ref={ref} className={`fixed w-56 h-full bg-blue-900 shadow-sm`}>
+		<aside ref={ref} className={'fixed w-56 h-full bg-blue-900 shadow-sm'}>
 			<div className="flex justify-center mt-5 mb-5">
 			<Link
 							href={'/'}
@@ -72,7 +89,7 @@ export const Sidebar = forwardRef<HTMLElement, Props>(({ showNav }, ref) => {
 			<div className="text-white flex justify-center mt-5 mb-4">
 				Resilience Check
 			</div>
-
+			
 			<ul className={'flex flex-col gap-2 ml-2 mr-2'}>
 				{MENU_ITEMS.map(({ name, icon: Icon, path }) => (
 					<li key={name.toLowerCase().replace(' ', '-')}>

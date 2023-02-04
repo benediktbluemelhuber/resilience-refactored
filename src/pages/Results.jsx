@@ -47,7 +47,7 @@ const Results = () => {
       
     }))
     try {
-      const res = await fetch('https://tcw-resilienz.herokuapp.com/api/resilience', {
+      const res = await fetch('http://localhost:3000/api/resilience', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

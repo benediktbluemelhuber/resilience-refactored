@@ -18,6 +18,7 @@ type Props = {
 	setShowNav: Dispatch<SetStateAction<boolean>>;
 };
 
+
 export const TopBar = ({ showNav, setShowNav }: Props) => {
 	return (
 		<section
