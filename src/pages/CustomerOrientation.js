@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter} from 'next/router'
 import CustomerOrientationArray from '../assets/customer_orientation.json'
-import LocalStorage from 'react-localstorage';
-
+import ProgressBar from '../components/ProgressBar';
 
 
 const CustomerOrientation = () => {
@@ -63,7 +62,9 @@ const CustomerOrientation = () => {
       >
         Next
       </button></div>
-      
+      <div className='mt-4 mb-4'> 
+      <ProgressBar value = {(2/6*100).toFixed(0)}/>
+      </div>
     </div>
     </>
   )

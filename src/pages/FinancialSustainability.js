@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import FinancialSustainabilityArray from '../assets/financial_sustainability.json'
-
+import ProgressBar from '../components/ProgressBar'
 
 const GoToMarketChannels = () => {
   const router = useRouter()
@@ -61,7 +61,9 @@ const GoToMarketChannels = () => {
       >
         Next
       </button></div>
-      
+      <div className='mt-4 mb-4'> 
+      <ProgressBar value = {(3/6*100).toFixed(0)}/>
+      </div>
     </div>
     </>
   )

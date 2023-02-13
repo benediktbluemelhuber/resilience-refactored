@@ -5,6 +5,7 @@ import * as d3 from 'd3'
 const DisplayValuesPage = (props) => {
   var  values  = props.values
   var titles = props.titles
+  var benchmark_values = props.values_benchmark
   //console.log(values)
   const svgRef = useRef();
   values =  values?.map(function(str) {
@@ -55,6 +56,7 @@ const DisplayValuesPage = (props) => {
     ];
     //////////////////// Draw the Chart //////////////////////////
     const values = props.values || [];
+    const values_benchmark = props.values_benchmark || [];
   for (var i = 0; i < chart_data[0].length; i++) {
     if(titles[i]){
         chart_data[0][i].axis = titles[i];
@@ -65,9 +67,13 @@ for (var i = 0; i < chart_data[0].length; i++) {
      chart_data[0][i].value = values[i] * 10;
   }
 }
+for (var i = 0; i < chart_data[1].length; i++) {
+  if(values_benchmark[i]){
+     chart_data[1][i].value = values_benchmark[i] * 100;
+  }
+}
     //console.log(chart_data)
-    var color = d3.scaleBand().range(["#0072C6", "#CC333F", "#00A0B0"]);
-    
+     
     var radarChartOptions = {
       w: width,
       h: height,
@@ -75,7 +81,8 @@ for (var i = 0; i < chart_data[0].length; i++) {
       maxValue: 1,
       levels: 5,
       roundStrokes: false,
-      color: color
+      color: d3.scaleOrdinal(d3.schemeCategory10),
+      color_circle: d3.scaleOrdinal(d3.schemeCategory10)
     };
     //Call function to draw the Radar chart
     RadarChart(".radarChart", chart_data, radarChartOptions);
@@ -94,7 +101,6 @@ for (var i = 0; i < chart_data[0].length; i++) {
         opacityCircles: 0.1, //The opacity of the circles of each blob
         strokeWidth: 2, //The width of the stroke around each blob
         roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
-        color: {0: "blue", 1: "grey"}
       };
 
       //Put all of the options into a variable called cfg
@@ -193,7 +199,8 @@ for (var i = 0; i < chart_data[0].length; i++) {
         })
         .attr("dy", "0.4em")
         .style("font-size", "10px")
-        .attr("fill", "#0072C6")
+        .style("color", "red")
+        .attr("fill", "#737373")
         .text(function (d, i) {
           return Format((maxValue * d/100) / cfg.levels);
         });
@@ -283,9 +290,8 @@ for (var i = 0; i < chart_data[0].length; i++) {
         .attr("d", function (d, i) {
           return radarLine(d);
         })
-        .style("fill", function (d, i) {
-          return cfg.color(i);
-        })
+        // todo: fill color
+        .style("fill", function(d,i) { return cfg.color(i); })
         .style("fill-opacity", cfg.opacityArea)
         .on("mouseover", function (d, i) {
           //Dim all blobs
@@ -312,7 +318,7 @@ for (var i = 0; i < chart_data[0].length; i++) {
           return radarLine(d);
         })
         .style("stroke-width", cfg.strokeWidth + "px")
-        .style("stroke", function (d, i) {
+        .style("stroke", function (d, i, j) {
           return cfg.color(i);
         })
         .style("fill", "none")
@@ -335,7 +341,7 @@ for (var i = 0; i < chart_data[0].length; i++) {
           return rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2);
         })
         .style("fill", function (d, i, j) {
-          return cfg.color(j);
+          return cfg.color_circle(j);
         })
         .style("fill-opacity", 0.8);
 
@@ -374,7 +380,7 @@ for (var i = 0; i < chart_data[0].length; i++) {
           tooltip
             .attr("x", newX)
             .attr("y", newY)
-            .text(Format(d.value))
+            .text(Format(i.value/100))
             .transition()
             .duration(200)
             .style("opacity", 1);

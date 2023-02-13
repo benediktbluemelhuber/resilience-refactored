@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import ProductportfolioArray from '../assets/product_portfolio.json'
-
+import ProgressBar from '../components/ProgressBar'
 
 const ProductPortfolio = () => {
   const router = useRouter()
@@ -54,15 +54,21 @@ const ProductPortfolio = () => {
           </div>
         </React.Fragment>
       ))}
+      
       <div className="flex">
+      
+
       <button
-        className="text-left ml-auto mt-4 p-2  bg-blue-500  text-white rounded-lg hover:bg-blue-700"
+        className="text-left ml-auto mt-4 mb-3 p-2  bg-blue-500  text-white rounded-lg hover:bg-blue-700"
         type="button"
         onClick={handleSubmit}
       >
         Next
       </button></div>
-      
+      <div className='mt-4 mb-4'> 
+      <ProgressBar value = {(1/6*100).toFixed(0)}/>
+      </div>
+
     </div>
     </>
   )

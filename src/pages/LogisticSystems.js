@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import LogisticSystemsArray from '../assets/logistic_systems.json';
+import ProgressBar from '../components/ProgressBar';
 
 const LogisticSystems = () => {
   const router = useRouter();
@@ -64,7 +65,9 @@ const LogisticSystems = () => {
       >
         Next
       </button></div>
-      
+      <div className='mt-4 mb-4'> 
+      <ProgressBar value = {(6/6*100).toFixed(0)}/>
+      </div>
     </div>
     </>
   )

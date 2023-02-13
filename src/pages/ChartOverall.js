@@ -35,23 +35,36 @@ const ChartOverall = (props) => {
         { axis: "Wissen, lernen, verstehen", value: 60 },
         { axis: "Globale Lage", value: 52 },
         
-      ] 
-      
-      
-      
+      ],
+      [
+        //Tsircon
+        { axis: "Resistenz", value: 65 },
+        { axis: "Globalität / Lokalität", value: 39 },
+        { axis: "Agilität und Flexibilität", value: 43 },
+        { axis: "Technologie, Medien und", value: 50 },
+        { axis: "Wissen, lernen, verstehen", value: 60 },
+        { axis: "Globale Lage", value: 52 },
+        
+      ]     
     ];
     //////////////////// Draw the Chart //////////////////////////
     const values = props.values || [];
+    const values_benchmark = props.values_benchmark || [];
+    for (var i = 0; i < chart_data[0].length; i++) {
+      if(titles[i]){
+          chart_data[0][i].axis = titles[i];
+      }
+    }
   for (var i = 0; i < chart_data[0].length; i++) {
-    if(titles[i]){
-        chart_data[0][i].axis = titles[i];
+    if(values[i]){
+       chart_data[0][i].value = values[i] * 10;
     }
   }
-for (var i = 0; i < chart_data[0].length; i++) {
-  if(values[i]){
-     chart_data[0][i].value = values[i] * 10;
+  for (var i = 0; i < chart_data[1].length; i++) {
+    if(values_benchmark[i]){
+       chart_data[1][i].value = values_benchmark[i] * 100;
+    }
   }
-}
     //console.log(chart_data)
     var color = d3.scaleBand().range(["#0072C6", "#CC333F", "#00A0B0"]);
 
@@ -61,7 +74,9 @@ for (var i = 0; i < chart_data[0].length; i++) {
       margin: margin,
       maxValue: 1,
       levels: 5,
-      roundStrokes: false
+      roundStrokes: false,
+      color: d3.scaleOrdinal(d3.schemeCategory10),
+      color_circle: d3.scaleOrdinal(d3.schemeCategory10)
     };
     //Call function to draw the Radar chart
     RadarChart(".radarChart", chart_data, radarChartOptions);
@@ -321,7 +336,7 @@ for (var i = 0; i < chart_data[0].length; i++) {
           return rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2);
         })
         .style("fill", function (d, i, j) {
-          return cfg.color(j);
+          return cfg.color_circle(j);
         })
         .style("fill-opacity", 0.8);
 
@@ -360,10 +375,11 @@ for (var i = 0; i < chart_data[0].length; i++) {
           tooltip
             .attr("x", newX)
             .attr("y", newY)
-            .text(Format(d.value))
+            .text(Format(i.value/100))
             .transition()
             .duration(200)
             .style("opacity", 1);
+            
         })
         .on("mouseout", function () {
           tooltip.transition().duration(200).style("opacity", 0);
