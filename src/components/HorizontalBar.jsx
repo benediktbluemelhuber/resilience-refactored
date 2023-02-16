@@ -13,13 +13,13 @@ const HorizontalBar = (props) => {
   }, [value])
 
   function checkRange(value) {
-    if (value >= 0 && value < 12) {
+    if (value >= 0 && value < 15) {
         return ["Auf Grundlage unserer Datenbasis ist Ihr Resilienzniveau", "reaktiv", ". Das Unternehmen handelt aufgrund von Intuition und Erfahrung, ohne die Ursachen von Ereignissen zu analysieren. Es reagiert erst, wenn es von einer Krise oder einem Schock betroffen ist, und versucht dann, den Schaden möglichst gering zu halten."];
-    } else if (value >= 12 && value < 28) {
+    } else if (value >= 15 && value < 35) {
         return ["Auf Grundlage unserer Datenbasis ist Ihr Resilienzniveau", "proaktiv", ". Das Unternehmen hat sich auf mögliche Risiken und Krisen vorbereitet und hat Pläne und Maßnahmen im Vorfeld festgelegt um aktiv auf Veränderungen zu reagieren und sich an solche anzupassen."];
-    } else if (value >= 28 && value < 52) {
+    } else if (value >= 35 && value < 70) {
         return ["Auf Grundlage unserer Datenbasis ist Ihr Resilienzniveau", "vorbeugend", ". Das Unternehmen hat Maßnahmen etabliert, um mögliche Risiken und Herausforderungen im Voraus zu identifizieren und zu minimieren."];
-      } else if (value > 53 && value < 87) {
+      } else if (value > 70 && value < 85) {
         return ["Auf Grundlage unserer Datenbasis ist Ihr Resilienzniveau", "widerstandsfähig", ". Das Unternehmen ist in der Lage, sich schnell von Rückschlägen zu erholen und hat mehrere Optionen, um auf unerwartete Ereignisse zu reagieren. Dadurch hat es die Möglichkeit langfristig erfolgreich zu bleiben."];
       } else if (value > 87 && value < 100) {
         return ["Auf Grundlage unserer Datenbasis ist Ihr Resilienzniveau", "innovativ", ". Das Unternehmen hat eine starke und flexible Unternehmensstruktur und eine Kultur der kontinuierlichen Verbesserung etabliert, die es ermöglicht, schnell auf Veränderungen zu reagieren und die notwendigen Anpassungen vorzunehmen. Es nutzt unerwartete Ereignisse als Möglichkeit, sich weiterzuentwickeln und neue Geschäftsmöglichkeiten zu erschließen."];

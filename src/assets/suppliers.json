@@ -1,7 +1,7 @@
 [{"id":1,"title":"Rohstoffabhängigkeiten", "question": "Wir beobachten die Rohstoffmärkte und diversifizieren unsere Rohstofflieferanten, um Risiken zu minimieren und die Resilienz zu erhöhen"},
 {"id":2,"title":"Technologieabhängigkeiten", "question": "Wir bewerten regelmäßig unsere Technologieabhängigkeiten von Lieferanten und setzen auf redundante Systeme, um Risiken zu minimieren und die Resilienz zu erhöhen."},
-{"id":3,"title":"Local Footprint", "question": "Wir beobachten den lokalen Markt und pflegen enge Beziehungen zu Lieferanten in unserer Region, um Risiken zu minimieren und die Resilienz zu erhöhen"},
-{"id":4,"title":"Geopolitische Risiken", "question": "Wir beobachten geopolitische Risiken und diversifizieren unsere Lieferanten entsprechend, um Risiken zu minimieren und die Resilienz zu erhöhen."},
-{"id":5,"title":"Kräfte-/Vertragsverhältnisse", "question": "Wir bewerten regelmäßig unsere Kräfte- und Vertragsverhältnisse mit Lieferanten und sichern unsere Beziehungen durch langfristige Verträge und Partnerschaften, um die Resilienz zu erhöhen"},
-{"id":6,"title":"Prognose/Digitale Tools", "question": "Wir setzen auf digitale Tools und Prognosen, um Lieferengpässe und Risiken frühzeitig zu erkennen und zu minimieren und die Resilienz zu erhöhen."}
+{"id":3,"title":"Local Footprint", "question": "Wir setzen stark auf lokale Ressourcen und Lieferanten, um unsere Kosten zu senken und unsere lokale Wertschöpfung zu erhöhen."},
+{"id":4,"title":"Geopolitische Risiken", "question": "Wir kennen und werten die geopolitischen Risiken wie Handelsbeschränkungen, Sanktionen oder Zöllen, die die Verfügbarkeit oder Kosten unserer Lieferanten beeinträchtigen können regemäßig aus."},
+{"id":5,"title":"Kräfte-/Vertragsverhältnisse", "question": "Wir bewerten regelmäßig unsere Kräfte- und Vertragsverhältnisse mit Lieferanten und sichern unsere Beziehungen durch langfristige Verträge und Partnerschaften."},
+{"id":6,"title":"Prognose/Digitale Tools", "question": "Wir setzen auf digitale Tools und Prognosen, um Lieferengpässe und Risiken frühzeitig zu erkennen und zu minimieren."}
 ]

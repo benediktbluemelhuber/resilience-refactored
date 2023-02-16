@@ -4,7 +4,7 @@ const Table = ({ scoresAssessment, scoresBenchmark, titles }) => {
         <thead>
           <tr class="bg-blue-800 text-white">
             <th class="px-4 py-2">Nr.</th>
-            <th class="px-4 py-2">Kategorie</th>
+            <th class="px-4 py-2">Werttreiber</th>
             <th class="px-4 py-2">Ihr Wert</th>
             <th class="px-4 py-2">Benchmark</th>
             <th class="px-4 py-2">Abweichung</th>

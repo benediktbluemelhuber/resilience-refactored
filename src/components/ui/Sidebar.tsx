@@ -41,6 +41,21 @@ const MENU_ITEMS = [
 		name: '6. Logistiksysteme',
 		icon: TruckIcon,
 		path: '/LogisticSystems'
+	},
+	{
+		name: '7. Strategische Planung',
+		icon: TruckIcon,
+		path: '/StrategicPlanning'
+	},
+	{
+		name: '8. ESG: Environmental, Social, Governance',
+		icon: TruckIcon,
+		path: '/ESG'
+	},
+	{
+		name: '9. Mitarbeiter',
+		icon: TruckIcon,
+		path: '/Employees'
 	}
 ];
 

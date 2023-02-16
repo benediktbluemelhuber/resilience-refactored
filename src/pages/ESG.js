@@ -1,44 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter} from 'next/router'
-import CustomerOrientationArray from '../assets/customer_orientation.json'
+import ESGArray from '../assets/esg.json'
 import ProgressBar from '../components/ProgressBar';
 
 
-const CustomerOrientation = () => {
+const ESG = () => {
   const router = useRouter()
-  const [valuesCustomer, setValues] = useState(Array(CustomerOrientationArray.length).fill(-1))
+  const [valuesESG, setValues] = useState(Array(ESGArray.length).fill(-1))
   
   useEffect(() => {
-    const storedValues = localStorage.getItem('valuesCustomer')
+    const storedValues = localStorage.getItem('valuesESG')
     if (storedValues) {
       setValues(JSON.parse(storedValues))
     }
   }, [])
   
   const handleButtonClick = (index, value) => {
-    const newValues = [...valuesCustomer]
+    const newValues = [...valuesESG]
     newValues[index] = value
     setValues(newValues)
-    localStorage.setItem('valuesCustomer', JSON.stringify(newValues))
+    localStorage.setItem('valuesESG', JSON.stringify(newValues))
   }
 
   const handleSubmit = () => {
     router.push({
-      pathname: '/FinancialSustainability'
+      pathname: '/Employees'
     })
   }
 
   return (<>
     <section className="mb-16">
-				<div className={'text-gray-700 text-6xl font-bold mb-3'}>Kundenorientierung</div>
+				<div className={'text-gray-700 text-6xl font-bold mb-3'}>ESG: Environmental, Social, Governance</div>
 		</section>
     <div className={'text-gray-700 text-xs mb-2'}>Beantworten Sie die folgenden Fragen mit einem Wert zwischen 1 und 10:</div>
     <div className={'text-gray-700 text-xs mb-3'}>1 = trifft überhaupt nicht zu | 10 = trifft voll zu</div>
     <div className="flex flex-col p-4 container center-left py-4">
-      {valuesCustomer.map((value, index) => (
+      {valuesESG.map((value, index) => (
         <React.Fragment key={index}>
           <label className="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
-            <strong>{index + 1}. {CustomerOrientationArray[index].title}</strong>: {CustomerOrientationArray[index].question} 
+            <strong>{index + 1}. {ESGArray[index].title}</strong>: {ESGArray[index].question} 
           </label>
           <div className="container flex center-left  mx-1 py-4">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(val => (
@@ -63,11 +63,11 @@ const CustomerOrientation = () => {
         Next
       </button></div>
       <div className='mt-4 mb-4'> 
-      <ProgressBar value = {(2/9*100).toFixed(0)}/>
+      <ProgressBar value = {(8/9*100).toFixed(0)}/>
       </div>
     </div>
     </>
   )
 }
 
-export default CustomerOrientation
+export default ESG

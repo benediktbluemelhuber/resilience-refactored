@@ -4,19 +4,14 @@ import HorizontalBar from '../components/HorizontalBar';
 import Chart from './Chart';
 import ChartOverall from './ChartOverall';
 import Table from '../components/Table';
-import Recommendations from '../components/Recommendations';
-import ColorLegendBox from '../components/ColorLegendBox';
-//import Handlungsempfehlung from '../components/Handlungsempfehlung';
+import Handlungsempfehlung from '../components/Handlungsempfehlung';
 import CustomerOrientationArray from '../assets/customer_orientation.json';
 import FinancialSustainabilityArray from '../assets/financial_sustainability.json';
 import SuppliersArray from '../assets/suppliers.json';
 import ProductportfolioArray from '../assets/product_portfolio.json';
 import GoToMarketChannelsArray from '../assets/go_to_market.json';
 import LogisticSystemsArray from '../assets/logistic_systems.json';
-import ContactInformation from '../components/ContactInformation';
-import ESGArray from '../assets/esg.json';
-import StrategicPlanningArray from '../assets/StrategicPlanning.json';
-import EmployeesArray from '../assets/employees.json';
+import ContactButton from '../components/ContactButton';
 
 const titles_overall = [
 	'Produktportfolio',
@@ -24,7 +19,11 @@ const titles_overall = [
 	'Finanzielle Nachhaltigkeit',
 	'Go-to-Market-Kanäle',
 	'Lieferanten',
-	'Logistiksysteme'
+	'Logistiksysteme',
+	'Strategische Planung',
+	'ESG: Environmental, Social, Governance',
+	'Mitarbeiter'
+
 ];
 
 const Results = () => {
@@ -38,7 +37,6 @@ const Results = () => {
 	useEffect(() => {
 		const storedValueIndustry = localStorage.getItem('industry');
 		const storedValuesCompany = localStorage.getItem('companySize');
-
 		console.log(storedValueIndustry);
 		if (storedValueIndustry) {
 			setIndustry(storedValueIndustry);
@@ -161,8 +159,9 @@ const Results = () => {
 	}, [values_state]); //console.log(items)
 
 	useEffect(() => {
-
+		console.log('test', average);
 		//setHandlungsEmpfehlung(getHandlungsempfehlung(average));
+		console.log(setHandlungsEmpfehlung(getHandlungsempfehlung(average)));
 		createNote();
 	}, [average]);
 
@@ -240,6 +239,7 @@ const Results = () => {
 	const averageBenchmarkConsolidated =
 		averageBenchmark.reduce((a, b) => a + b, 0) / averageBenchmark.length;
 	const router = useRouter();
+	
 
 	return (
 		<>
@@ -248,12 +248,12 @@ const Results = () => {
 			</section>
 			<div class="text-2xl font-medium text-gray-700 mb-2">Resilienz Check | TCW</div>
 			<div class="text-m font-medium text-gray-700 mb-2 mr-4 ">
-			Vielen Dank für Ihre Bewertung. Nachfolgend finden Sie eine erste Auswertung Ihrer
+  Vielen Dank für Ihre Bewertung. Nachfolgend finden Sie eine erste Auswertung Ihrer
   Ergebnisse sowie eine Reifegradraneinschätzung, anhand derer Sie Ihre Ergebnisse
   indikativ einordnen können. Auf der Grundlage Ihrer Antworten können wir für Ihre
   Organisation einen Gesamtreifegrad von <strong>{average.toFixed(2)}</strong> ermitteln.
   <strong>{average < averageBenchmarkConsolidated *100 ? " Sie liegen damit unter dem Benchmark." : " Sie liegen damit über dem Benchmark."}</strong>
-			</div>
+</div>
 			<div class="flex">
 				<div class="block bg-white text-gray-700 rounded-lg p-2 border-2 border-blue-500 mb-4">
 					<div class="text-xs text-blue-700">Resilienzniveau</div>
@@ -267,18 +267,64 @@ const Results = () => {
 			<div class="mb-4">
 				<HorizontalBar values={average} />
 			</div>
-			<div class="text-2xl font-medium text-gray-700 mb-2">
-				Detaillierte Auswertung 
-			</div>
+			<div class="text-2xl font-medium text-gray-700 mb-2">Detaillierte Auswertung</div>
 			<div class="text-m font-medium text-gray-700 mb-2 mr-4">
 				Bitte ergänzen Sie Ihre Kontaktdaten, um eine detaillierte Auswertung zu erhalten.
 			</div>
-			<ContactInformation/>
-			<div class="mb-10">
+
+			<div class="mb-4"></div>
+			<div class="border-2 border-gray-400 rounded-xl m-2 ">
+				<div class="flex flex-wrap flex-direction-column">
+					<div class=" rounded-xl m-2 mr-10 ">
+						<div class="text-left text-gray text-xl ml-4 mb-3 mt-4">
+							<strong>Ergebnis und Benchmark der Wertreiberanalyse</strong>
+						</div>
+						<ChartOverall
+							titles={titles_overall}
+							values={averagePerClass}
+							values_benchmark={averageBenchmark}
+						/>
+					</div>
+					<div class=" rounded-xl m-2 ">
+						<div class="text-left text-gray text-xl ml-4 mb-3 mt-4">
+							<strong>Ihre detaillierten Ergebnisse im Überblick</strong>
+						</div>
+						<div class="m-2 ">
+							<Table
+								titles={titles_overall}
+								scoresAssessment={averagePerClass}
+								scoresBenchmark={averageBenchmark}
+							/>
+						</div>
+						<div class="text-m font-medium text-gray-700 mb-2 ml-2 mt-2 ">
+							Sofern Sie Fragen zu Ihrem Resilienzniveau haben oder vielleicht eine{' '}
+							<br /> tiefere Einschätzung wünschen, können Sie gerne eine Mail an
+							mail@tcw.de schreiben:
+						</div>
+						<div class=" rounded-xl m-2 ">
+							<ContactButton />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="border-2 border-gray-400 rounded-xl m-2 ">
+				<div class="text-2xl font-medium text-gray-700 mb-2 mt-2 ml-2">
+					Handlungsempfehlung
+				</div>
+				<div class="h-full mb-2  rounded-l-lg text-left text-m flex items-center justify-center ml-2">
+					<Handlungsempfehlung propValue={handlungsempfehlung}/>
+				</div>
 				
 			</div>
+
+			<div class="rounded-xl mt-20 " />
 		</>
 	);
 };
 
 export default Results;
+
+/*
+<div class="h-full mb-2  rounded-l-lg text-left text-m flex items-center justify-center ml-2">
+					<div dangerouslySetInnerHTML={{ __html: handlungsempfehlung }} />
+				</div>*/

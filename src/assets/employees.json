@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "title": "Fortbildung",
+      "question": "Wir bieten regelmäßige Weiterbildungen und Schulungen an, um die Fähigkeiten und Kompetenzen unserer Mitarbeiter zu erhöhen."
+    },
+    {
+      "id": 2,
+      "title": "Führung",
+      "question": "Unsere Führungskräfte zeigen Vorbildverhalten und fördern eine positive Zukunftsorientierung."
+    },
+    {
+      "id": 3,
+      "title": "Innovationskultur",
+      "question": "Unsere Organisation fördert eine Innovationskultur und unterstützt neue Ideen und Konzepte."
+    },
+    {
+      "id": 4,
+      "title": "Mitarbeiterbeteiligung",
+      "question": "Wir fördern die Beteiligung unserer Mitarbeiter an Entscheidungsprozessen und schaffen Möglichkeiten zur Mitgestaltung."
+    },
+    {
+      "id": 5,
+      "title": "Mitarbeiterzufriedenheit",
+      "question": "Wir legen großen Wert auf die Zufriedenheit unserer Mitarbeiter und fördern ein positives Arbeitsklima."
+    },
+    {
+      "id": 6,
+      "title": "Work-Life-Balance",
+      "question": "Wir unterstützen die Work-Life-Balance unserer Mitarbeiter und bieten flexible Arbeitszeitmodelle an."
+    }
+  ]

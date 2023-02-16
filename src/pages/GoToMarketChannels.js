@@ -42,7 +42,7 @@ const GoToMarketChannels = () => {
           <div className="container flex center-left  mx-1 py-4">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(val => (
               <button key={val}
-              className={`flex justify-between text-center p-2 ml-3  mb-3 text-xs bg-white  rounded-lg hover:bg-blue-700 ${value === val ? 'bg-blue-900 text-white' : ''} ml-2`}
+              className={`flex justify-between text-center px-4 py-2 ml-3  mb-3 text-xs bg-white  rounded-lg hover:bg-blue-700 ${value === val ? 'bg-blue-900 text-white' : ''} ml-2`}
               type="button"
                 onClick={() => handleButtonClick(index, val)}
               >
@@ -62,7 +62,7 @@ const GoToMarketChannels = () => {
         Next
       </button></div>
       <div className='mt-4 mb-4'> 
-      <ProgressBar value = {(4/6*100).toFixed(0)}/>
+      <ProgressBar value = {(4/9*100).toFixed(0)}/>
       </div>
     </div>
     </>

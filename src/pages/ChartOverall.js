@@ -18,7 +18,7 @@ const ChartOverall = (props) => {
   }, [svgRef, values]);
 
   const drawChart = (svg) => {
-    var margin = { top: 50, right: 70, bottom: 80, left: 70 },
+    var margin = { top: 50, right: 90, bottom: 80, left: 90 },
       width =
         450,
       height = 450;
@@ -34,6 +34,9 @@ const ChartOverall = (props) => {
         { axis: "Technologie, Medien und", value: 50 },
         { axis: "Wissen, lernen, verstehen", value: 60 },
         { axis: "Globale Lage", value: 52 },
+        { axis: "1", value: 50 },
+        { axis: "2", value: 60 },
+        { axis: "3", value: 52 },
         
       ],
       [
@@ -44,6 +47,9 @@ const ChartOverall = (props) => {
         { axis: "Technologie, Medien und", value: 50 },
         { axis: "Wissen, lernen, verstehen", value: 60 },
         { axis: "Globale Lage", value: 52 },
+        { axis: "1", value: 50 },
+        { axis: "2", value: 60 },
+        { axis: "3", value: 52 },
         
       ]     
     ];
@@ -85,7 +91,7 @@ const ChartOverall = (props) => {
       var cfg = {
         w: 600, //Width of the circle
         h: 600, //Height of the circle
-        margin: { top: 20, right: 20, bottom: 20, left: 20 }, //The margins of the SVG
+        margin: { top: 20, right: 40, bottom: 20, left: 40 }, //The margins of the SVG
         levels: 3, //How many levels or inner circles should there be drawn
         maxValue: 100, //What is the value that the biggest circle will represent
         labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed

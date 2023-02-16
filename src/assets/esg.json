@@ -1,0 +1,32 @@
+[
+    {
+    "id": 1,
+    "title": "Umwelt",
+    "question": "Unser Unternehmen ergreift Maßnahmen, um seine Auswirkungen auf die Umwelt zu minimieren und die Nachhaltigkeit der Geschäftstätigkeit zu verbessern."
+    },
+    {
+    "id": 2,
+    "title": "Soziale Aspekte",
+    "question": "Unser Unternehmen setzt sich für die Interessen und Bedürfnisse der Mitarbeiter, der Gemeinden, in denen es tätig ist, und anderer Stakeholder ein."
+    },
+    {
+    "id": 3,
+    "title": "Governance",
+    "question": "Unser Unternehmen wird transparent und verantwortungsbewusst geführt und hält sich an ethische Standards und gesetzliche Vorschriften."
+    },
+    {
+    "id": 4,
+    "title": "Finanzielle Leistung",
+    "question": "Unser Unternehmen weist eine stabile und wirtschaftlich erfolgreiche Performance auf, erfüllt seine finanziellen Verpflichtungen und wird den Erwartungen der Stakeholder gerecht."
+    },
+    {
+    "id": 5,
+    "title": "Kundenzufriedenheit",
+    "question": "Das Unternehmen erfüllt die Bedürfnisse und Erwartungen der Kunden und weist eine hohe Kundenzufriedenheit auf."
+    },
+    {
+    "id": 6,
+    "title": "Innovationskraft",
+    "question": "Unser Unternehmen ist in der Lage, neue Ideen und Technologien zu entwickeln und umzusetzen, die seine Wettbewerbsfähigkeit erhält oder verbessert."
+    }
+    ]
