@@ -5,7 +5,7 @@ import ProgressBar from '../components/ProgressBar'
 
 const Suppliers = () => {
   const router = useRouter()
-  const [valuesSupppliers, setValues] = useState(Array(SuppliersArray.length).fill(-1))
+  const [valuesSupppliers, setValues] = useState(Array(SuppliersArray.length).fill(0))
   
   useEffect(() => {
     const storedValues = localStorage.getItem('valuesSuppliers')
@@ -36,7 +36,7 @@ const Suppliers = () => {
     <div class="flex flex-col p-4 container center-left py-4">
       {valuesSupppliers.map((value, index) => (
         <React.Fragment key={index}>
-          <label class="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
+          <label class="block text-gray-700 text-m font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
             <strong>{index + 1}. {SuppliersArray[index].title}</strong>: {SuppliersArray[index].question} 
           </label>
           <div class="container flex center-left  mx-1 py-4">

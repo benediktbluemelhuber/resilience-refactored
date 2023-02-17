@@ -4,20 +4,19 @@ import HorizontalBar from '../components/HorizontalBar';
 import Chart from './Chart';
 import ChartOverall from './ChartOverall';
 import Table from '../components/Table';
+import Recommendations from '../components/Recommendations';
 import ColorLegendBox from '../components/ColorLegendBox';
-
-import Handlungsempfehlung from '../components/Handlungsempfehlung';
+//import Handlungsempfehlung from '../components/Handlungsempfehlung';
 import CustomerOrientationArray from '../assets/customer_orientation.json';
 import FinancialSustainabilityArray from '../assets/financial_sustainability.json';
 import SuppliersArray from '../assets/suppliers.json';
 import ProductportfolioArray from '../assets/product_portfolio.json';
 import GoToMarketChannelsArray from '../assets/go_to_market.json';
 import LogisticSystemsArray from '../assets/logistic_systems.json';
-import StrategicPlanningArray from '../assets/StrategicPlanning.json';
+import ContactInformation from '../components/ContactInformation';
 import ESGArray from '../assets/esg.json';
+import StrategicPlanningArray from '../assets/StrategicPlanning.json';
 import EmployeesArray from '../assets/employees.json';
-import ContactButton from '../components/ContactButton';
-import Recommendations from '../components/Recommendations';
 
 const titles_overall = [
 	'Produktportfolio',
@@ -25,10 +24,7 @@ const titles_overall = [
 	'Finanzielle Nachhaltigkeit',
 	'Go-to-Market-Kanäle',
 	'Lieferanten',
-	'Logistiksysteme',
-	'Strategische Planung',
-	'ESG: Environmental, Social, Governance',
-	'Mitarbeiter'
+	'Logistiksysteme'
 ];
 
 const Results = () => {
@@ -42,6 +38,7 @@ const Results = () => {
 	useEffect(() => {
 		const storedValueIndustry = localStorage.getItem('industry');
 		const storedValuesCompany = localStorage.getItem('companySize');
+
 		console.log(storedValueIndustry);
 		if (storedValueIndustry) {
 			setIndustry(storedValueIndustry);
@@ -50,8 +47,6 @@ const Results = () => {
 			setCompanySize(storedValuesCompany);
 		}
 	}, []);
-
-	
 	const createNote = async () => {
 		try {
 			const res = await fetch('http://localhost:3000/api/resilience', {
@@ -166,9 +161,8 @@ const Results = () => {
 	}, [values_state]); //console.log(items)
 
 	useEffect(() => {
-		console.log('test', average);
+
 		//setHandlungsEmpfehlung(getHandlungsempfehlung(average));
-		console.log(setHandlungsEmpfehlung(getHandlungsempfehlung(average)));
 		createNote();
 	}, [average]);
 
@@ -213,16 +207,6 @@ const Results = () => {
 	}
 
 	/// get titles
-	const titlesCustomerOrientation = getTitles(CustomerOrientationArray);
-	const titlesLogisticsSystems = getTitles(LogisticSystemsArray);
-	const titlesSuppliers = getTitles(SuppliersArray);
-	const titlesProductPortfolio = getTitles(ProductportfolioArray);
-	const titlesFinancial = getTitles(FinancialSustainabilityArray);
-	const titlesGoToMarket = getTitles(GoToMarketChannelsArray);
-	const titlesStrategicPlanning = getTitles(StrategicPlanningArray);
-	const titlesESG = getTitles(ESGArray);
-	const titlesEmployees = getTitles(EmployeesArray);
-
 	
 
 	const benchmarkProductportfolio = [0.76, 0.76, 0.56, 0.66, 0.66, 0.86];
@@ -268,8 +252,8 @@ const Results = () => {
   Ergebnisse sowie eine Reifegradraneinschätzung, anhand derer Sie Ihre Ergebnisse
   indikativ einordnen können. Auf der Grundlage Ihrer Antworten können wir für Ihre
   Organisation einen Gesamtreifegrad von <strong>{average.toFixed(2)}</strong> ermitteln.
-  <strong>{average < averageBenchmarkConsolidated *100 ? " Sie liegen damit unter dem Benchmark." : " Sie liegen damit über dem Benchmark."}</strong>
-</div>
+  <strong>{average < averageBenchmarkConsolidated *100 ? " Verglichen mit ähnlichen Unternehmen in Ihrer Branche liegen Sie damit unter dem Benchmark." : " Verglichen mit ähnlichen Unternehmen in Ihrer Branche liegen Sie damit über dem Benchmark."}</strong>
+			</div>
 			<div class="flex">
 				<div class="block bg-white text-gray-700 rounded-lg p-2 border-2 border-blue-500 mb-4">
 					<div class="text-xs text-blue-700">Resilienzniveau</div>
@@ -284,181 +268,19 @@ const Results = () => {
 				<HorizontalBar values={average} />
 			</div>
 			<div class="text-2xl font-medium text-gray-700 mb-2">
-				Auswertung und Branchenbenchmark der Wertreiberanalyse
+				Detaillierte Auswertung und Handlungsempfehlungen
 			</div>
 			<div class="text-m font-medium text-gray-700 mb-2 mr-4">
-				Nachfolgend erhalten Sie eine Übersicht wie Ihr Unternehmen in den einzelnen
-				Kategorien im Vergleich zu Ihrer ausgewählten Branche abgeschnitten hat. Legende:
+				Bitte ergänzen Sie Ihre Kontaktdaten, um eine detaillierte Auswertung zu erhalten.
 			</div>
-			<div class="mb-4">
-				<ColorLegendBox text="Resilienzgrad des Werttreibers" color="blue" />
-				<ColorLegendBox text="Branchenbenchmark" color="orange" />
-			</div>
-			<div class="flex flex-wrap flex-direction-column">
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Produktportfolio</strong>
-					</div>
-					<Chart
-						titles={titlesProductPortfolio}
-						values={valuesProductChart}
-						values_benchmark={benchmarkProductportfolio}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Kundenorientierung</strong>
-					</div>
-					<Chart
-						titles={titlesCustomerOrientation}
-						values={valuesCustomerChart}
-						values_benchmark={benchmarkCustomerOrientation}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Finanzielle Nachhaltigkeit</strong>
-					</div>
-					<Chart
-						titles={titlesFinancial}
-						values={valuesFinancialsChart}
-						values_benchmark={benchmarkFinancialSustainability}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Go-to-Market-Kanäle</strong>
-					</div>
-					<Chart
-						titles={titlesGoToMarket}
-						values={valuesGoToMarketChart}
-						values_benchmark={benchmarkGoToMarketChannels}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Lieferanten</strong>
-					</div>
-					<Chart
-						titles={titlesSuppliers}
-						values={valuesSuppliersChart}
-						values_benchmark={benchmarkSuppliers}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Logistiksysteme</strong>
-					</div>
-					<Chart
-						titles={titlesLogisticsSystems}
-						values={valuesLogisticsSystemsChart}
-						values_benchmark={benchmarkLogisticSystems}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Strategische Planung</strong>
-					</div>
-					<Chart
-						titles={titlesStrategicPlanning}
-						values={valuesStrategicPlanningChart}
-						values_benchmark={benchmarkStrategicPlanning}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>ESG: Environmental, Social Governance </strong>
-					</div>
-					<Chart
-						titles={titlesStrategicPlanning}
-						values={valuesESGChart}
-						values_benchmark={benchmarkStrategicPlanning}
-					/>
-				</div>
-				<div class="border-2 border-gray-400 rounded-xl m-2 ">
-					<div class="text-left text-gray text-xl ml-4 mt-4">
-						<strong>Mitarbieter </strong>
-					</div>
-					<Chart
-						titles={titlesEmployees}
-						values={valuesEmployeesChart}
-						values_benchmark={benchmarkEmployees}
-					/>
-				</div>
-			</div>
-			<div class="text-2xl font-medium text-gray-700 mb-2 mt-2">Gesamtergebnis</div>
-			<div class="text-m font-medium text-gray-700 mb-2 mr-8">
-				In der folgenden Übersicht werden die einzelnen Werttreiber aggregiert und der Durchschnitt ihrer Eingaben für jeden Werttreiber berechnet. Die Werte Ihres Unternehmens werden mit dem Branchenbenchmark verglichen, um Ihnen mögliche Verbesserungspotenziale aufzuzeigen.
-
-			</div>
-			<div class="mb-4"></div>
-			<div class="border-2 border-gray-400 rounded-xl m-2 ">
-				<div class="flex flex-wrap flex-direction-column">
-					<div class=" rounded-xl m-2 mr-10 ">
-						<div class="text-left text-gray text-xl ml-4 mb-3 mt-4">
-							<strong>Ergebnis und Benchmark der Wertreiberanalyse</strong>
-						</div>
-						<ChartOverall
-							titles={titles_overall}
-							values={averagePerClass}
-							values_benchmark={averageBenchmark}
-						/>
-					</div>
-					<div class=" rounded-xl m-2 ">
-						<div class="text-left text-gray text-xl ml-4 mb-3 mt-4">
-							<strong>Ihre detaillierten Ergebnisse im Überblick</strong>
-						</div>
-						<div class="m-2 ">
-							<Table
-								titles={titles_overall}
-								scoresAssessment={averagePerClass}
-								scoresBenchmark={averageBenchmark}
-							/>
-						</div>
-            <div class="text-m font-medium text-gray-700 mb-2 ml-2 mt-2 ">
-            Sofern Sie Fragen zu Ihrem Resilienzniveau haben  oder vielleicht eine <br/> tiefere Einschätzung wünschen, können Sie gerne eine Mail an mail@tcw.de
-            schreiben:</div>
-            <div class=" rounded-xl m-2 ">
-            <ContactButton/>
-				</div> 
-					</div>
-          
-				</div>
-			</div>
-			<div class="border-2 border-gray-400 rounded-xl m-2 ">
-				<div class="text-left text-gray text-xl ml-4 mb-3 mt-4">
-					<strong>Detaillierte Handlungsempfehlungen</strong>
-				</div>
-        <div class="text-m font-medium text-gray-700 ml-2 mb-2 mr-8">
-Im nachfolgenden sind exemplarische Handlungsempfehlungen dargestellt für die einzelnen Werttreiber bei denen Sie unter dem Branchenbenchmark abgeschnitten haben. 
-			</div>
-				<div class="m-2 w-">
-					<Recommendations
-						titles={titles_overall}
-						scoresAssessment={averagePerClass}
-						scoresBenchmark={averageBenchmark}
-					/>
-				</div>
-			</div>
-
-			<div class="border-2 border-gray-400 rounded-xl m-2 ">
-				<div class="text-2xl font-medium text-gray-700 mb-2 mt-2 ml-2">
-					Handlungsempfehlung
-				</div>
-				<div class="h-full mb-2  rounded-l-lg text-left text-m flex items-center justify-center ml-2">
-				<Handlungsempfehlung propValue={handlungsempfehlung}/>
-				</div>
+			<ContactInformation/>
+			<p className="text-xs text-gray-500 mt-10 mb-4  w-full text-center">
+			Mit der Aktivierung des obigen Buttons willigen Sie ein, dass wir Ihre personenbezogenen Daten speichern dürfen. Weitere Informationen hierzu finden Sie in unserer  <a href="https://www.tcw.de/unternehmensberatung/sonstiges/impressum-150#3" target="_blank" rel="noreferrer">Datenschutzerklärung</a>. Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft gegenüber TCW widerrufen. Hierzu genügt eine E-Mail an mail@tcw.de.</p> 
+			<div class="mb-10">
 				
 			</div>
-
-			<div class="rounded-xl mt-20 " />
 		</>
 	);
 };
 
 export default Results;
-
-/*
-<div class="h-full mb-2  rounded-l-lg text-left text-m flex items-center justify-center ml-2">
-					<div dangerouslySetInnerHTML={{ __html: handlungsempfehlung }} />
-				</div>*/

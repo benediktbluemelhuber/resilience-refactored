@@ -5,7 +5,7 @@ import ProgressBar from '../components/ProgressBar';
 
 const LogisticSystems = () => {
   const router = useRouter();
-  const [valuesLogisticsSystems, setValues] = useState(Array(LogisticSystemsArray.length).fill(-1));
+  const [valuesLogisticsSystems, setValues] = useState(Array(LogisticSystemsArray.length).fill(0));
 
     useEffect(() => {
     // Load data from local storage
@@ -40,7 +40,7 @@ const LogisticSystems = () => {
     <div className="flex flex-col p-4 container center-left py-4">
       {valuesLogisticsSystems.map((value, index) => (
         <React.Fragment key={index}>
-          <label className="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
+          <label className="block text-gray-700 text-m font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
             <strong>{index + 1}. {LogisticSystemsArray[index].title}</strong>: {LogisticSystemsArray[index].question} 
           </label>
           <div className="container flex center-left  mx-2 py-4">

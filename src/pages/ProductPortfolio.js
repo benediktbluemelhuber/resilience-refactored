@@ -5,7 +5,7 @@ import ProgressBar from '../components/ProgressBar'
 
 const ProductPortfolio = () => {
   const router = useRouter()
-  const [valuesProduct, setValues] = useState(Array(ProductportfolioArray.length).fill(-1))
+  const [valuesProduct, setValues] = useState(Array(ProductportfolioArray.length).fill(0))
   
   useEffect(() => {
     const storedValues = localStorage.getItem('valuesProduct')
@@ -37,7 +37,7 @@ const ProductPortfolio = () => {
     <div className="flex flex-col p-4 container center-left py-4">
       {valuesProduct.map((value, index) => (
         <React.Fragment key={index}>
-          <label className="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
+          <label className="block text-gray-700 text-m font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
             <strong>{index + 1}. {ProductportfolioArray[index].title}</strong>: {ProductportfolioArray[index].question} 
           </label>
           <div className="container flex center-left py-4">

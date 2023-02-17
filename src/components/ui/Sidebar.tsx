@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 // import icons
-import { HomeIcon, UserCircleIcon, BuildingStorefrontIcon, CurrencyDollarIcon, GlobeEuropeAfricaIcon, TruckIcon, UserGroupIcon } from '@heroicons/react/24/solid';
+import { HomeIcon, UserCircleIcon, BuildingStorefrontIcon, CurrencyDollarIcon, GlobeEuropeAfricaIcon, TruckIcon, UserGroupIcon, GlobeAltIcon, DocumentCheckIcon, UserIcon } from '@heroicons/react/24/solid';
 
 type Props = {
 	showNav: boolean;
@@ -29,7 +29,7 @@ const MENU_ITEMS = [
 	},
 	{
 		name: '4. Go-to-Market Kanäle',
-		icon: GlobeEuropeAfricaIcon,
+		icon: GlobeAltIcon,
 		path: '/GoToMarketChannels'
 	},
 	{
@@ -44,17 +44,17 @@ const MENU_ITEMS = [
 	},
 	{
 		name: '7. Strategische Planung',
-		icon: TruckIcon,
+		icon: DocumentCheckIcon,
 		path: '/StrategicPlanning'
 	},
 	{
 		name: '8. ESG: Environmental, Social, Governance',
-		icon: TruckIcon,
+		icon: GlobeEuropeAfricaIcon,
 		path: '/ESG'
 	},
 	{
 		name: '9. Mitarbeiter',
-		icon: TruckIcon,
+		icon: UserIcon,
 		path: '/Employees'
 	}
 ];

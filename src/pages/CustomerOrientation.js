@@ -37,7 +37,7 @@ const CustomerOrientation = () => {
     <div className="flex flex-col p-4 container center-left py-4">
       {valuesCustomer.map((value, index) => (
         <React.Fragment key={index}>
-          <label className="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
+          <label className="block text-gray-700 text-m font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
             <strong>{index + 1}. {CustomerOrientationArray[index].title}</strong>: {CustomerOrientationArray[index].question} 
           </label>
           <div className="container flex center-left  mx-1 py-4">

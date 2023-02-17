@@ -5,7 +5,7 @@ import ProgressBar from '../components/ProgressBar'
 
 const GoToMarketChannels = () => {
   const router = useRouter()
-  const [valuesGoToMarket, setValues] = useState(Array(GoToMarketChannelsArray.length).fill(-1))
+  const [valuesGoToMarket, setValues] = useState(Array(GoToMarketChannelsArray.length).fill(0))
   
   useEffect(() => {
     const storedValues = localStorage.getItem('valuesGoToMarket')
@@ -36,7 +36,7 @@ const GoToMarketChannels = () => {
     <div className="flex flex-col p-4 container center-left py-4">
       {valuesGoToMarket.map((value, index) => (
         <React.Fragment key={index}>
-          <label className="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
+          <label className="block text-gray-700 text-m font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
             <strong>{index + 1}. {GoToMarketChannelsArray[index].title}</strong>: {GoToMarketChannelsArray[index].question} 
           </label>
           <div className="container flex center-left  mx-1 py-4">

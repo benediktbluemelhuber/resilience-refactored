@@ -6,7 +6,7 @@ import ProgressBar from '../components/ProgressBar';
 
 const Employees = () => {
   const router = useRouter()
-  const [valuesEmployees, setValues] = useState(Array(EmployeesArray.length).fill(-1))
+  const [valuesEmployees, setValues] = useState(Array(EmployeesArray.length).fill(0))
   
   useEffect(() => {
     const storedValues = localStorage.getItem('valuesEmployees')
@@ -37,13 +37,13 @@ const Employees = () => {
     <div className="flex flex-col p-4 container center-left py-4">
       {valuesEmployees.map((value, index) => (
         <React.Fragment key={index}>
-          <label className="block text-gray-700 text-xs font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
+          <label className="block text-gray-700 text-m font-bold mb-3 text-left" htmlFor={`slider-${index}`}>
             <strong>{index + 1}. {EmployeesArray[index].title}</strong>: {EmployeesArray[index].question} 
           </label>
           <div className="container flex center-left  mx-1 py-4">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(val => (
               <button key={val}
-              className={`flex justify-between text-center px-4 py-2 ml-3  mb-3 text-xs bg-white rounded-lg hover:bg-blue-700 ${value === val ? 'bg-blue-900 text-white' : ''} ml-2`}
+              className={`flex justify-between text-center px-4 py-2 ml-3  mb-3 text-m bg-white rounded-lg hover:bg-blue-700 ${value === val ? 'bg-blue-900 text-white' : ''} ml-2`}
               type="button"
                 onClick={() => handleButtonClick(index, val)}
               >

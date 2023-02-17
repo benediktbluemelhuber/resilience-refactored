@@ -4,6 +4,8 @@ import HorizontalBar from '../components/HorizontalBar';
 import Chart from './Chart';
 import ChartOverall from './ChartOverall';
 import Table from '../components/Table';
+import ColorLegendBox from '../components/ColorLegendBox';
+
 import Handlungsempfehlung from '../components/Handlungsempfehlung';
 import CustomerOrientationArray from '../assets/customer_orientation.json';
 import FinancialSustainabilityArray from '../assets/financial_sustainability.json';
@@ -23,7 +25,6 @@ const titles_overall = [
 	'Strategische Planung',
 	'ESG: Environmental, Social, Governance',
 	'Mitarbeiter'
-
 ];
 
 const Results = () => {
@@ -248,7 +249,7 @@ const Results = () => {
 			</section>
 			<div class="text-2xl font-medium text-gray-700 mb-2">Resilienz Check | TCW</div>
 			<div class="text-m font-medium text-gray-700 mb-2 mr-4 ">
-  Vielen Dank für Ihre Bewertung. Nachfolgend finden Sie eine erste Auswertung Ihrer
+			Vielen Dank für Ihre Teilnahme. Nachfolgend finden Sie eine erste Auswertung Ihrer
   Ergebnisse sowie eine Reifegradraneinschätzung, anhand derer Sie Ihre Ergebnisse
   indikativ einordnen können. Auf der Grundlage Ihrer Antworten können wir für Ihre
   Organisation einen Gesamtreifegrad von <strong>{average.toFixed(2)}</strong> ermitteln.
@@ -267,9 +268,13 @@ const Results = () => {
 			<div class="mb-4">
 				<HorizontalBar values={average} />
 			</div>
-			<div class="text-2xl font-medium text-gray-700 mb-2">Detaillierte Auswertung</div>
+			<div class="text-2xl font-medium text-gray-700 mb-2">Detaillierte Auswertung und Handlungsempfehlung</div>
 			<div class="text-m font-medium text-gray-700 mb-2 mr-4">
-				Bitte ergänzen Sie Ihre Kontaktdaten, um eine detaillierte Auswertung zu erhalten.
+			In der folgenden Übersicht werden die einzelnen Werttreiber aggregiert und der Durchschnitt ihrer Eingaben für jeden Werttreiber berechnet. Die Werte Ihres Unternehmens werden mit dem Branchenbenchmark verglichen, um Ihnen mögliche Verbesserungspotenziale aufzuzeigen. Legende:
+			</div>
+			<div class="mb-4">
+				<ColorLegendBox text="Resilienzgrad des Werttreibers" color="blue" />
+				<ColorLegendBox text="Branchenbenchmark" color="orange" />
 			</div>
 
 			<div class="mb-4"></div>
@@ -297,9 +302,7 @@ const Results = () => {
 							/>
 						</div>
 						<div class="text-m font-medium text-gray-700 mb-2 ml-2 mt-2 ">
-							Sofern Sie Fragen zu Ihrem Resilienzniveau haben oder vielleicht eine{' '}
-							<br /> tiefere Einschätzung wünschen, können Sie gerne eine Mail an
-							mail@tcw.de schreiben:
+							Wir freuen uns darauf, mit Ihnen über die Ergebnisse zu sprechen und Optimierungspotentiale zu identifizieren.
 						</div>
 						<div class=" rounded-xl m-2 ">
 							<ContactButton />
