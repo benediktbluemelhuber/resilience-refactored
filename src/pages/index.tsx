@@ -29,10 +29,14 @@ const HomePage = () => {
         Start
       </button>
       
-      <h2 className="text-2xl font-bold mb-6">Kontakt:</h2>
+      <h2 className="text-2xl font-bold mb-2">Kontakt:</h2>
       <p className="text-lg mb-6">
+       Ulrich von Waldow
+      <br />
+  E-Mail: <a href="mailto:ulrich.von.waldow@tcw.de">ulrich.von.waldow@tcw.de</a>
+  <br />
       TCW Transfer-Centrum für Produktions-Logistik und Technologie-Management GmbH & Co. KG
-        <br />
+      <br />
         Leopoldstraße 145
         <br />
         80804 München

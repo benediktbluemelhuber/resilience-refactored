@@ -34,20 +34,56 @@ const Results = () => {
 	const [handlungsempfehlung, setHandlungsEmpfehlung] = useState(0);
 	const [industry, setIndustry] = useState('');
 	const [companySize, setCompanySize] = useState('');
-	console.log('companySize', companySize);
+	const [surname, setSurname] = useState('');
+	const [givenName, setGivenName] = useState('');
+	const [email, setEmail] = useState('');
+	const [interested, setInterested] = useState(false);
+
 	useEffect(() => {
 		const storedValueIndustry = localStorage.getItem('industry');
 		const storedValuesCompany = localStorage.getItem('companySize');
-		console.log(storedValueIndustry);
+		const storedSurname = localStorage.getItem('surname')
+		const storedGivenName = localStorage.getItem('givenName')
+		const storedEmail = localStorage.getItem('email')
+		const storedInterested = localStorage.getItem('interested')
+
 		if (storedValueIndustry) {
 			setIndustry(storedValueIndustry);
 		}
 		if (storedValuesCompany) {
 			setCompanySize(storedValuesCompany);
 		}
+		if (storedSurname) {
+			setSurname(storedSurname);
+		}
+		if (storedGivenName) {
+			setGivenName(storedGivenName);
+		}
+		if (storedEmail) {
+			setEmail(storedEmail);
+		}
+		if (storedInterested) {
+			setInterested(storedInterested);
+		}
 	}, []);
+	
 	const createNote = async () => {
 		try {
+			/*console.log(JSON.stringify({
+				industry,
+				companySize,
+				valuesProduct,
+				valuesCustomer,
+				valuesFinancials,
+				valuesGoToMarket,
+				valuesSuppliers,
+				valuesLogisticsSystems,
+				averagePerClass,
+				average,
+				email,
+				surname,
+				givenName
+			}))*/
 			const res = await fetch('http://localhost:3000/api/resilience', {
 				method: 'POST',
 				headers: {
@@ -63,8 +99,15 @@ const Results = () => {
 					valuesGoToMarket,
 					valuesSuppliers,
 					valuesLogisticsSystems,
+					valuesStrategicPlanning,
+					valuesESG,
+					valuesEmployees,
 					averagePerClass,
-					average
+					average,
+					givenName,
+					surname,
+				email,
+				interested
 				})
 			});
 		} catch (error) {
@@ -99,7 +142,6 @@ const Results = () => {
 			//console.log(valuesChart)
 			return valuesChart;
 		} else {
-			console.log('The passed value is not an array');
 			return null;
 		}
 	};
@@ -160,9 +202,9 @@ const Results = () => {
 	}, [values_state]); //console.log(items)
 
 	useEffect(() => {
-		console.log('test', average);
+		//console.log('test', average);
 		//setHandlungsEmpfehlung(getHandlungsempfehlung(average));
-		console.log(setHandlungsEmpfehlung(getHandlungsempfehlung(average)));
+		//console.log(setHandlungsEmpfehlung(getHandlungsempfehlung(average)));
 		createNote();
 	}, [average]);
 
@@ -327,7 +369,3 @@ const Results = () => {
 
 export default Results;
 
-/*
-<div class="h-full mb-2  rounded-l-lg text-left text-m flex items-center justify-center ml-2">
-					<div dangerouslySetInnerHTML={{ __html: handlungsempfehlung }} />
-				</div>*/

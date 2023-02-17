@@ -4,7 +4,6 @@ import HandlungsempfehlungArray from '../assets/handlungsempfehlung_total.json';
 
 const Handlungsempfehlung = ({ propValue }) => {
   const selectedData = HandlungsempfehlungArray[propValue];
-  console.log(selectedData)
   return (
     <div className="my-4">
       

@@ -41,13 +41,41 @@ const companySchema = new Schema(
 			type: Array,
 			default: []
 		},
-    averagePerClass: {
+		valuesStrategicPlanning: {
+			type: Array,
+			default: []
+		},
+		valuesESG: {
+			type: Array,
+			default: []
+		},
+		valuesEmployees: {
 			type: Array,
 			default: []
 		},
     average: {
 			type: Number
 		},
+		givenName: {
+			type: String,
+			trim: true,
+			maxlength: [200, 'Description must be less than 200 characters']
+		},
+		surname: {
+			type: String,
+			trim: true,
+			maxlength: [200, 'Description must be less than 200 characters']
+		},
+		email: {
+			type: String,
+			trim: true,
+			maxlength: [200, 'Description must be less than 200 characters']
+		},
+		interested: {
+			type: Boolean,
+			default: false
+		},
+		
 		_id: {
 			type: Schema.Types.ObjectId,
 			auto: true

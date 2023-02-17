@@ -8,6 +8,7 @@ const ContactForm = () => {
 	const [interested, setInterested] = useState(false);
 	const [notInterested, setNotInterested] = useState(false);
 	const [errors, setErrors] = useState({});
+	const [submitted, setSubmitted] = useState(false);
 
 	const router = useRouter();
 
@@ -53,31 +54,43 @@ const ContactForm = () => {
 
 	
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const newErrors = {};
-		if (givenName.trim() === '') {
-			newErrors.givenName = 'Bitte geben Sie Ihren Vornamen ein.';
-		}
-		if (surname.trim() === '') {
-			newErrors.surname = 'Bitte geben Sie Ihren Nachnamen ein.';
-		}
-		if (email.trim() === '') {
-			newErrors.email = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';
-		} else if (!/\S+@\S+\.\S+/.test(email)) {
-			newErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-		}
-		if (!interested && !notInterested) {
-      newErrors.interested = 'Bitte wählen Sie eine Option.';
-    }
-    setErrors(newErrors);
+  const handleSubmit = (e) => {
+	e.preventDefault();
+	const newErrors = {};
+	if (givenName.trim() === '') {
+		newErrors.givenName = 'Bitte geben Sie Ihren Vornamen ein.';
+	}
+	if (surname.trim() === '') {
+		newErrors.surname = 'Bitte geben Sie Ihren Nachnamen ein.';
+	}
+	if (email.trim() === '') {
+		newErrors.email = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';
+	} else if (!/\S+@\S+\.\S+/.test(email)) {
+		newErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+	} else {
+		localStorage.setItem('email', email); // add email to local storage
+		localStorage.setItem('givenName', givenName); // add givenName to local storage
+		localStorage.setItem('surname', surname); // add surname to local storage
+		localStorage.setItem('interested', interested); // add interested to local storage
+	}
+	if (!interested && !notInterested) {
+		newErrors.interested = 'Bitte wählen Sie eine Option.';
+	}
+	setErrors(newErrors);
 
-		if (Object.keys(newErrors).length === 0) {
-			router.push({
-				pathname: '/DetailedResults'
-			});
-		}
-	};
+	if (Object.keys(newErrors).length === 0) {
+		setSubmitted(true);
+	}
+};
+
+const handleRedirectClick = () => {
+	if (submitted) {
+	  router.push({
+		pathname: '/DetailedResults',
+	  });
+	}
+  };
+  
 
 	return (
 		<div className="bg-gray-100 p-6">
@@ -162,7 +175,7 @@ const ContactForm = () => {
 				<div className="text-center">
 					<button
 						className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
-						type="submit"
+						onClick={handleRedirectClick}
 					>
 						Absenden & weiter zu den detaillierten Ergebnissen.
 					</button>
